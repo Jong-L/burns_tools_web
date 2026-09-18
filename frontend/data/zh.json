@@ -1,0 +1,11 @@
+{
+  "language": "中文",
+  "htmlLang": "zh-CN",
+  "page": {
+    "title": "计数器演示",
+    "description": "这是一个 React 示例。",
+    "counter": {
+      "reset": "重置"
+    }
+  }
+}

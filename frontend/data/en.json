@@ -1,0 +1,11 @@
+{
+  "language": "English",
+  "htmlLang": "en",
+  "page": {
+    "title": "Counter Demo",
+    "description": "This is a React example.",
+    "counter": {
+      "reset": "Reset"
+    }
+  }
+}

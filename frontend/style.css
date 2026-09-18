@@ -61,6 +61,20 @@ button:hover {
   opacity: 0.85;
 }
 
-button#btn-reset {
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.lang-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  padding: 8px 18px;
+}
+
+.btn-reset {
   background: #aaa;
 }
