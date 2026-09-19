@@ -1,6 +1,8 @@
+'use client'
+
 import { useState } from 'react'
-import { useLang } from '../router/useLang'
-import { languages } from '../data'
+import { useLang } from '../useLang'
+import { languages } from '../../data'
 
 export default function App() {
   const { lang, data, switchLanguage } = useLang()
@@ -26,7 +28,7 @@ export default function App() {
         <h1>{data.page.title}</h1>
         <p className="desc">{data.page.description}</p>
 
-        <div className="counter" id="counter">{count}</div>
+        <div className="counter">{count}</div>
 
         <div className="btn-group">
           <button onClick={() => setCount(count - 1)}>-1</button>
