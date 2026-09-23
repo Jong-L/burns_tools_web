@@ -1,0 +1,43 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from backend.database import init_db
+from backend.routers.anti_procrastination import router as anti_procrastination_router
+from backend.routers.but_rebuttal import router as but_rebuttal_router
+from backend.routers.daily_plan import router as daily_plan_router
+from backend.routers.journal import router as journal_router
+from backend.routers.thought_counter import router as thought_counter_router
+from backend.routers.tools import router as tools_router
+
+app = FastAPI()
+
+# CORS：开发期允许 Next.js dev server (localhost:3000) 的跨域请求
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@app.on_event("startup")
+def on_startup() -> None:
+    """启动时建表 + 幂等写入种子数据（单用户 jong / 11 条扭曲选项）。"""
+    init_db()
+
+
+app.include_router(journal_router)
+app.include_router(tools_router)
+app.include_router(thought_counter_router)
+app.include_router(daily_plan_router)
+app.include_router(anti_procrastination_router)
+app.include_router(but_rebuttal_router)
+
+
+@app.get("/api/health")
+def health() -> dict[str, str]:
+    return {"status": "ok"}
