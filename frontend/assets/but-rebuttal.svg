@@ -1,0 +1,23 @@
+<!-- 反驳"但是"法 but_rebuttal_tool：被轻轻划掉的"但是"气泡 → 长出勾选的反驳气泡 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+  <title>反驳“但是”法</title>
+  <style>
+    .mute { stroke: #7E9B82; }
+    .prime { stroke: #4F9C61; }
+    @media (prefers-color-scheme: dark) {
+      .mute { stroke: #93AC95; }
+      .prime { stroke: #7BC48F; }
+    }
+  </style>
+  <g>
+    <!-- 左：写着"但是"的气泡，被一道斜线轻轻划掉 -->
+    <rect class="mute" x="3.4" y="4.8" width="9.8" height="7" rx="3.5" />
+    <path class="mute" d="M6.9 11.8v2.6l3-2.6" />
+    <path class="mute" d="M6.2 8.4h4.6" />
+    <path class="mute" d="M5.9 9.1 10.9 7.7" />
+    <!-- 右：写下理性反驳的气泡，里面是一个安稳的勾 -->
+    <rect class="prime" x="10.8" y="12.2" width="9.8" height="7" rx="3.5" />
+    <path class="prime" d="M17.1 19.2v2.6l-3-2.6" />
+    <path class="prime" stroke-width="1.8" d="m14.2 16 1.9 1.9 3-3.5" />
+  </g>
+</svg>

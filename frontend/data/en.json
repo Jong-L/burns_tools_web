@@ -1,11 +1,60 @@
 {
   "language": "English",
   "htmlLang": "en",
-  "page": {
-    "title": "Counter Demo",
-    "description": "This is a React example.",
-    "counter": {
-      "reset": "Reset"
-    }
+  "meta": {
+    "title": "Burns Mood Tools",
+    "description": "CBT self-help exercises inspired by Feeling Good: the Negative Thought Journal, Negative Thought Counter, Daily Activity Plan, Anti-Procrastination Table, and the \"But\" Rebuttal. Write your thoughts down, see them clearly, and move a little lighter."
+  },
+  "a11y": {
+    "skip": "Skip to main content",
+    "langNav": "Language"
+  },
+  "brand": {
+    "name": "Burns Mood Tools"
+  },
+  "home": {
+    "eyebrow": "CBT exercises inspired by Feeling Good by Dr. David Burns",
+    "title": "Write it down.\nLet it settle.",
+    "desc": "Approach the tests and exercises with a still mind. You are gradually mastering ideas and techniques that have proven especially effective in helping you overcome painful emotions.",
+    "cta": "Enter the toolkit",
+    "note": "No judgment, no rush. Go at your own pace."
+  },
+  "tools": {
+    "eyebrow": "Five exercises",
+    "heading": "The Toolkit",
+    "intro": "Each tool mirrors an exercise from Feeling Good. Start with whatever feels easiest today.",
+    "cta": "Start the exercise",
+    "items": {
+      "thought_journal": {
+        "name": "Negative Thought Journal",
+        "description": "Write down the situation and the automatic thought in three or six columns, name the distortion, and answer it with reason."
+      },
+      "thought_counter": {
+        "name": "Negative Thought Counter",
+        "description": "Just one number a day: how often negative thoughts showed up. A line across the days shows the change."
+      },
+      "daily_activity_plan": {
+        "name": "Daily Activity Plan",
+        "description": "Plan your day across fourteen time slots, note what actually happened, then rate mastery and pleasure."
+      },
+      "anti_procrastination_table": {
+        "name": "Anti-Procrastination Table",
+        "description": "Break a task into small steps and compare predicted versus actual difficulty and satisfaction. The dread shrinks."
+      },
+      "but_rebuttal_tool": {
+        "name": "The \"But\" Rebuttal",
+        "description": "For every \"but …\" excuse, write a more realistic, more rational rebuttal — until procrastination has nowhere to stand."
+      }
+    },
+    "emptyTitle": "The toolkit is being packed",
+    "emptyDesc": "All five exercises are on their way. Please check back soon.",
+    "emptyCta": "Back to home"
+  },
+  "placeholder": {
+    "badge": "In the works",
+    "note": "This tool is being carefully built around the exercise from the book, and will be waiting for you here soon. Until then, feel free to explore the others.",
+    "back": "Back to the toolkit",
+    "unknown": "We couldn't find that tool",
+    "unknownNote": "It may still be on its way, or the link may be off."
   }
 }

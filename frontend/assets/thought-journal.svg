@@ -1,0 +1,25 @@
+<!-- 消极思维日志 thought_journal：摊开的日志本 + 冒出的新芽（写下即生长） -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+  <title>消极思维日志</title>
+  <style>
+    .ink { stroke: #2F6B44; }
+    .line { stroke: #7E9B82; }
+    .sprout { fill: #E3F0E4; stroke: #4F9C61; }
+    @media (prefers-color-scheme: dark) {
+      .ink { stroke: #DCE8DC; }
+      .line { stroke: #93AC95; }
+      .sprout { fill: rgba(123, 196, 143, 0.18); stroke: #7BC48F; }
+    }
+  </style>
+  <g>
+    <!-- 摊开的日志本 -->
+    <path class="ink" d="M12 8.6C10.3 7.2 7.6 6.9 5 7.5v10.2c2.6-.6 5.3-.3 7 1.1 1.7-1.4 4.4-1.7 7-1.1V7.5c-2.6-.6-5.3-.3-7 1.1Z" />
+    <path class="ink" d="M12 8.6v10.2" />
+    <!-- 本页上的两行记录 -->
+    <path class="line" d="M7.4 10.7h3.4M7.4 13.5h3.4M13.2 10.7h3.4M13.2 13.5h3.4" />
+    <!-- 中心冒出的新芽 -->
+    <path class="ink" d="M12 7.2v1.4" />
+    <path class="sprout" d="M12 7.4C10.8 6.9 9.5 5.3 8.8 3.8c1.1 1.7 2.5 2.9 3.2 3.6Z" />
+    <path class="sprout" d="M12 7.4c1.2-.5 2.5-2.1 3.2-3.6-1.1 1.7-2.5 2.9-3.2 3.6Z" />
+  </g>
+</svg>

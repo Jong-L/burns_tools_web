@@ -1,0 +1,25 @@
+<!-- 每日活动计划表 daily_activity_plan：一日日历 + 时段行 + 已完成的勾 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+  <title>每日活动计划表</title>
+  <style>
+    .ink { stroke: #2F6B44; }
+    .line { stroke: #7E9B82; }
+    .prime { stroke: #4F9C61; }
+    @media (prefers-color-scheme: dark) {
+      .ink { stroke: #DCE8DC; }
+      .line { stroke: #93AC95; }
+      .prime { stroke: #7BC48F; }
+    }
+  </style>
+  <g>
+    <!-- 日历外框与挂环 -->
+    <rect class="ink" x="3.6" y="5.2" width="16.8" height="15.3" rx="2.6" />
+    <path class="ink" d="M8.2 3.2v2.6M15.8 3.2v2.6" />
+    <!-- 日期栏 -->
+    <path class="ink" d="M3.6 9.8h16.8" />
+    <!-- 安排好的时段 -->
+    <path class="line" d="M6.8 12.8h3.8M6.8 16h3.8" />
+    <!-- 已完成的一格 -->
+    <path class="prime" stroke-width="1.8" d="m13.9 12.5 2.1 2.1 3.3-3.7" />
+  </g>
+</svg>

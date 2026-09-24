@@ -1,0 +1,21 @@
+<!-- 反拖延症表 anti_procrastination_table：表格 + 拆成小步骤的台阶 + 下降的难度 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+  <title>反拖延症表</title>
+  <style>
+    .ink { stroke: #2F6B44; }
+    .prime { stroke: #4F9C61; }
+    @media (prefers-color-scheme: dark) {
+      .ink { stroke: #DCE8DC; }
+      .prime { stroke: #7BC48F; }
+    }
+  </style>
+  <g>
+    <!-- 表格：表头 + 一根列分隔 -->
+    <rect class="ink" x="3.6" y="4.6" width="16.8" height="14.8" rx="2.4" />
+    <path class="ink" d="M3.6 8.4h16.8M12.2 8.4v11" />
+    <!-- 左列：任务被拆成一级级向下的台阶 -->
+    <path class="ink" d="M6.2 11.2h2.4v2.2h2.4v2.2h1.4" />
+    <!-- 右列：难度与满足感向下走的箭头 -->
+    <path class="prime" stroke-width="1.7" d="M16.4 11.4v4.8M14.7 14.5l1.7 1.7 1.7-1.7" />
+  </g>
+</svg>
