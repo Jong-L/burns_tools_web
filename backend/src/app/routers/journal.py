@@ -13,9 +13,9 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, joinedload
 
-from backend import models, schemas, text_data
-from backend.database import get_db
-from backend.seed import SINGLE_USER
+from .. import models, schemas, text_data
+from ..database import get_db
+from ..seed import SINGLE_USER
 
 router = APIRouter(prefix="/api", tags=["journal"])
 

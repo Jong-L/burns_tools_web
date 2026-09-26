@@ -1,20 +1,14 @@
 """Pydantic 请求/响应模型。
-
-对应 spec 2.1（思维日志）与 2.6（扭曲选项）的 API 边界。
 """
 
-from __future__ import annotations
-
 from datetime import datetime
-
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-LOG_TYPES = ("three_column", "six_column")
+LOG_TYPES = ("three_column", "six_column")#思维日志的模版类别
 
 
 class DistortionIn(BaseModel):
     """写入用：扭曲只传 code + 用户描述，name 由服务端反查快照（spec 2.1）。"""
-
     code: str = Field(min_length=1)
     note: str = ""
 
@@ -97,7 +91,6 @@ class DistortionOptionOut(BaseModel):
 
 class ToolOut(BaseModel):
     """GET /api/tools：工具列表项（静态数据，见 routers/tools.py）。"""
-
     id: str
     name: str
     description: str

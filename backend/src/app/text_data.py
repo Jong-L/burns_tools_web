@@ -11,12 +11,12 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
-# routers/ 的上级的上级的上级 = 项目 backend/ 目录
-DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
+# 项目 backend/ 目录
+DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 
 
 def supported_languages(name: str) -> tuple[str, ...]:
-    """某类数据当前支持的语言列表（扫描 <name>_<lang>.json）。"""
+    """当前支持的含有 name 的语言列表（扫描 <name>_<lang>.json）。"""
     return tuple(sorted(p.stem.removeprefix(f"{name}_") for p in DATA_DIR.glob(f"{name}_*.json")))
 
 
@@ -24,7 +24,7 @@ def supported_languages(name: str) -> tuple[str, ...]:
 def load(name: str, lang: str) -> tuple[dict, ...]:
     """读 <name>_<lang>.json 并返回条目元组；文件缺失/格式错报 FileNotFoundError/JSONDecodeError。"""
     data_file = DATA_DIR / f"{name}_{lang}.json"
-    raw = json.loads(data_file.read_text(encoding="utf-8"))
+    raw: dict = json.loads(data_file.read_text(encoding="utf-8"))
     # 每类文件的条目都包在唯一的顶层键里（tools / options）
     (items,) = raw.values()
     return tuple(items)

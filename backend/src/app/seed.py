@@ -4,8 +4,6 @@
 表里只存 code + sort_order（code 是唯一权威标识，文本不落库）。
 """
 
-from __future__ import annotations
-
 from sqlalchemy import engine, text
 
 SINGLE_USER = {"id": 0, "username": "jong"}

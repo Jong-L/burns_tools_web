@@ -10,7 +10,7 @@ from datetime import date
 
 from fastapi import APIRouter, HTTPException, Path
 
-from backend import schemas
+from .. import schemas
 
 router = APIRouter(prefix="/api", tags=["anti_procrastination"])
 

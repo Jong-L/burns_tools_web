@@ -8,7 +8,8 @@ import thoughtCounterIcon from '@/assets/thought-counter.svg'
 import dailyActivityPlanIcon from '@/assets/daily-activity-plan.svg'
 import antiProcrastinationIcon from '@/assets/anti-procrastination-table.svg'
 import butRebuttalIcon from '@/assets/but-rebuttal.svg'
-import { apiBaseUrl } from '@/config/api'
+//后端 API 地址
+const apiBaseUrl = process.env.API_BASE_URL ?? 'http://127.0.0.1:8000'
 
 // 每个工具配专属语义图标，禁止复用同一个通用图标（style.md 组件规则）
 export const toolMeta = [
@@ -19,7 +20,7 @@ export const toolMeta = [
   { id: 'but_rebuttal_tool', icon: butRebuttalIcon },
 ]
 
-// 按语言从后端取完整工具列表（含文案），页面渲染只依赖这一个函数。
+// 按语言从后端取完整工具列表信息
 // revalidate 与列表页的 ISR 周期一致：数据 60 秒内复用，后端改内容最迟 1 分钟生效。
 export async function getTools(lang) {
   try {

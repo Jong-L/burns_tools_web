@@ -56,7 +56,7 @@ def get_db():
 def init_db() -> None:
     """建表 + 种子数据。应用启动时调用一次（见 main.py）。"""
     # 导入 models 触发表定义注册，否则 create_all 无表可建
-    from backend import models, seed  # noqa: F401
+    from . import models, seed  # noqa: F401
 
     # 库级 PRAGMA：journal_mode 持久化在数据库文件里，执行一次即可
     with engine.connect() as conn:
