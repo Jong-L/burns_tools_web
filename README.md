@@ -55,7 +55,7 @@ Web 版与桌面版的差别只有三处：**从单机变多用户、从桌面�
 
 - 前端页面走 SSR，`proxy.js` 负责语言重定向：`/` → `/zh`，未知语言（如 `/fr`）也回落到 `/zh`。
 - `/api` 已由 nginx 转发到 8000 端口，后端起来即通；后端未启动时访问 `/api` 返回 502 属正常现象，不是配置错误。
-- 开发期前端在 `localhost:3000` 直连后端 8000，后端已放开对应的 CORS。
+- 开发期前端在 `localhost:3100` 直连后端 8000，后端已放开对应的 CORS。
 
 ### 2.3 数据归属
 
@@ -108,7 +108,7 @@ burns_tools_web/
 ```bash
 cd frontend
 npm ci
-npm run dev        # http://localhost:3000 会自动跳到 /zh
+npm run dev        # http://localhost:3100 会自动跳到 /zh
 ```
 
 ### 启动后端

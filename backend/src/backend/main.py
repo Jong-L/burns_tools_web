@@ -11,12 +11,12 @@ from backend.routers.tools import router as tools_router
 
 app = FastAPI()
 
-# CORS：开发期允许 Next.js dev server (localhost:3000) 的跨域请求
+# CORS：开发期允许 Next.js dev server (localhost:3100) 的跨域请求
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
+        "http://localhost:3100",
+        "http://127.0.0.1:3100",
     ],
     allow_credentials=True,
     allow_methods=["*"],

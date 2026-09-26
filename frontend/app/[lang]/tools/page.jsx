@@ -1,4 +1,4 @@
-// app/[lang]/tools/page.tsx
+// app/[lang]/tools/page.jsx
 // 工具列表页（服务端组件，走 ISR/静态渲染保证 SEO）：
 //   工具静态信息（id、图标、名称、描述）来自本地 data 层，与语言走 data/*.json；
 //   后续接后端 /api/tools 时，只需把 getTools 换成同一 id 结构的接口数据。
@@ -6,9 +6,9 @@
 // 「单个元素的体面」：只有 1 个工具时渲染为特写卡；空状态同样大标题居中 + 主按钮。
 import Link from 'next/link'
 import Image from 'next/image'
-import { getData } from '../../../data'
-import { getTools } from '../../../data/tools'
-import { IconArrowRight } from '../../icons'
+import { getData } from '@/data'
+import { getTools } from '@/data/tools'
+import { IconArrowRight } from '@/app/_components/icons'
 
 export const revalidate = 60
 

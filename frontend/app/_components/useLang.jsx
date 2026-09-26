@@ -5,7 +5,7 @@
 
 import { createContext, useContext } from 'react'
 import { useParams, usePathname, useRouter } from 'next/navigation'
-import { getData } from '../data'
+import { getData } from '@/data'
 
 const LanguageContext = createContext(null)
 

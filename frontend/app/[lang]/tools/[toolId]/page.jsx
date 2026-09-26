@@ -1,13 +1,13 @@
-// app/[lang]/tools/[toolId]/page.tsx
+// app/[lang]/tools/[toolId]/page.jsx
 // 工具详情占位页：守 style.md「空状态与占位页」规范——
 //   大标题居中 + 氛围背景 + 一个体面的主按钮，禁止贴顶小字条；
 //   进行中状态用暖琥珀 + 温和图标（非警报样式），颜色之外有图标与文字双重编码。
 // 注意：Next.js 15+ 起 params 是 Promise，必须先 await。
 import Link from 'next/link'
 import Image from 'next/image'
-import { getData } from '../../../../data'
-import { getTool } from '../../../../data/tools'
-import { IconArrowLeft, IconLeaf } from '../../../icons'
+import { getData } from '@/data'
+import { getTool } from '@/data/tools'
+import { IconArrowLeft, IconLeaf } from '@/app/_components/icons'
 
 export async function generateMetadata({ params }) {
   const { lang, toolId } = await params

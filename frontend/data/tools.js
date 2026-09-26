@@ -1,11 +1,11 @@
 // 工具元数据：与语言无关的结构信息（tool_id 顺序 + 专属图标）。
 // 文案（工具名、描述）在 data/*.json 的 tools.items 里，遵循「文案与组件分离」。
 // tool_id 与桌面版 / docs/data-layer-spec.md 保持一致，后续接后端 API 时按同一 id 对应。
-import thoughtJournalIcon from '../assets/thought-journal.svg'
-import thoughtCounterIcon from '../assets/thought-counter.svg'
-import dailyActivityPlanIcon from '../assets/daily-activity-plan.svg'
-import antiProcrastinationIcon from '../assets/anti-procrastination-table.svg'
-import butRebuttalIcon from '../assets/but-rebuttal.svg'
+import thoughtJournalIcon from '@/assets/thought-journal.svg'
+import thoughtCounterIcon from '@/assets/thought-counter.svg'
+import dailyActivityPlanIcon from '@/assets/daily-activity-plan.svg'
+import antiProcrastinationIcon from '@/assets/anti-procrastination-table.svg'
+import butRebuttalIcon from '@/assets/but-rebuttal.svg'
 import { getData } from './index'
 
 // 每个工具配专属语义图标，禁止复用同一个通用图标（style.md 组件规则）

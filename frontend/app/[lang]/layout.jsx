@@ -4,10 +4,11 @@
 //   氛围光斑（慢漂移）、纸纤噪点、天与地（底部收边带）、顶栏（品牌 + 语言切换）。
 // 注意：整个 app 目录下所有路由都在 [lang] 之内，所以它就是根布局。
 import Link from 'next/link'
-import { getData, hasLanguage } from '../../data'
-import { LanguageProvider } from '../useLang'
-import LanguageSwitch from '../LanguageSwitch'
-import { IconSprout } from '../icons'
+import { getData } from '@/data'
+import { hasLanguage } from '@/config/i18n'
+import { LanguageProvider } from '@/app/_components/useLang'
+import LanguageSwitch from '@/app/_components/LanguageSwitch'
+import { IconSprout } from '@/app/_components/icons'
 import '../globals.css'
 
 // 数据驱动：按语言生成 <title> 与 <html lang>（原来用 useEffect 手动改 document）

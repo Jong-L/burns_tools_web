@@ -2,10 +2,11 @@
 // style.md「垂直居中律」——min-height: 100dvh + flex 双居中，内容光学上浮约 4%；
 // 主标题 48–56px/800，主 CTA padding 14px 36px、字号 16px（高度 ≥ 44px）。
 // 每屏只讲一件事：一句标题、一句描述、一个按钮。
+// 命名说明：原为 app/[lang]/App.jsx，但它只是首页 Hero，与「应用根」无关，故迁到此处并改名。
 import Link from 'next/link'
-import { IconSprout, IconArrowRight } from '../icons'
+import { IconSprout, IconArrowRight } from '@/app/_components/icons'
 
-export default function App({ data, lang }) {
+export default function HomeHero({ data, lang }) {
   const { home } = data
 
   return (
