@@ -1,0 +1,29 @@
+{
+    "tools": [
+        {
+            "id": "thought_journal",
+            "name": "Negative Thought Journal",
+            "description": "Write down the situation and the automatic thought in three or six columns, name the distortion, and answer it with reason."
+        },
+        {
+            "id": "thought_counter",
+            "name": "Negative Thought Counter",
+            "description": "Just one number a day: how often negative thoughts showed up. A line across the days shows the change."
+        },
+        {
+            "id": "daily_activity_plan",
+            "name": "Daily Activity Plan",
+            "description": "Plan your day across fourteen time slots, note what actually happened, then rate mastery and pleasure."
+        },
+        {
+            "id": "anti_procrastination_table",
+            "name": "Anti-Procrastination Table",
+            "description": "Break a task into small steps and compare predicted versus actual difficulty and satisfaction. The dread shrinks."
+        },
+        {
+            "id": "but_rebuttal_tool",
+            "name": "The \"But\" Rebuttal",
+            "description": "For every \"but …\" excuse, write a more realistic, more rational rebuttal — until procrastination has nowhere to stand."
+        }
+    ]
+}

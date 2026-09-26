@@ -63,8 +63,9 @@ class DistortionOut(BaseModel):
 
     # ORM 列名是 option_code，对外统一叫 code（spec 2.1 读出形态）
     code: str | None = Field(validation_alias="option_code")
-    name: str
     note: str
+    # name 不再落库（快照已取消）：路由层按 code + 语言从 JSON 现查后回填
+    name: str = ""
 
 
 class JournalLogOut(BaseModel):
@@ -84,15 +85,14 @@ class JournalLogOut(BaseModel):
 
 
 class DistortionOptionOut(BaseModel):
-    """GET /api/distortion-options：中英双语选项 + 默认描述（spec 2.6）。"""
+    """GET /api/distortion-options?lang=xx：按语言返回的选项 + 默认描述（spec 2.6）。
 
-    model_config = ConfigDict(from_attributes=True)
+    文本来自 backend/data/distortion_options_<lang>.json，表里只有 code + sort_order。
+    """
 
     code: str
-    name_zh: str
-    name_en: str
-    default_note_zh: str
-    default_note_en: str
+    name: str
+    default_note: str
 
 
 class ToolOut(BaseModel):

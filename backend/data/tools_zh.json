@@ -1,0 +1,29 @@
+{
+    "tools": [
+        {
+            "id": "thought_journal",
+            "name": "消极思维日志",
+            "description": "用三列法或六列法，写下引发情绪的事件与下意识思维，给认知扭曲命名，再认真写下一段理性回应。"
+        },
+        {
+            "id": "thought_counter",
+            "name": "消极思维计数器",
+            "description": "每天只记一个数：消极思维出现了几次。天数连成线，趋势会替你说出改变。"
+        },
+        {
+            "id": "daily_activity_plan",
+            "name": "每日活动计划表",
+            "description": "把一天切成十四个时间段，先写计划、再记实际，最后给掌控感与愉悦感打分。"
+        },
+        {
+            "id": "anti_procrastination_table",
+            "name": "反拖延症表",
+            "description": "把任务拆成一小步一小步，对比「预计」与「实际」的难度和满足感，畏难会变小。"
+        },
+        {
+            "id": "but_rebuttal_tool",
+            "name": "反驳「但是」法",
+            "description": "针对每一个「但是……」的借口，写下更实际、更理性的反驳，让拖延没有落脚点。"
+        }
+    ]
+}

@@ -24,28 +24,6 @@
     "heading": "The Toolkit",
     "intro": "Each tool mirrors an exercise from Feeling Good. Start with whatever feels easiest today.",
     "cta": "Start the exercise",
-    "items": {
-      "thought_journal": {
-        "name": "Negative Thought Journal",
-        "description": "Write down the situation and the automatic thought in three or six columns, name the distortion, and answer it with reason."
-      },
-      "thought_counter": {
-        "name": "Negative Thought Counter",
-        "description": "Just one number a day: how often negative thoughts showed up. A line across the days shows the change."
-      },
-      "daily_activity_plan": {
-        "name": "Daily Activity Plan",
-        "description": "Plan your day across fourteen time slots, note what actually happened, then rate mastery and pleasure."
-      },
-      "anti_procrastination_table": {
-        "name": "Anti-Procrastination Table",
-        "description": "Break a task into small steps and compare predicted versus actual difficulty and satisfaction. The dread shrinks."
-      },
-      "but_rebuttal_tool": {
-        "name": "The \"But\" Rebuttal",
-        "description": "For every \"but …\" excuse, write a more realistic, more rational rebuttal — until procrastination has nowhere to stand."
-      }
-    },
     "emptyTitle": "The toolkit is being packed",
     "emptyDesc": "All five exercises are on their way. Please check back soon.",
     "emptyCta": "Back to home"

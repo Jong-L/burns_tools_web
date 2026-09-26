@@ -12,7 +12,7 @@ import { IconArrowLeft, IconLeaf } from '@/app/_components/icons'
 export async function generateMetadata({ params }) {
   const { lang, toolId } = await params
   const data = getData(lang)
-  const tool = getTool(lang, toolId)
+  const tool = await getTool(lang, toolId)
   return {
     title: tool ? `${tool.name} · ${data.meta.title}` : data.meta.title,
   }
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
 export default async function ToolDetailPage({ params }) {
   const { lang, toolId } = await params
   const data = getData(lang)
-  const tool = getTool(lang, toolId)
+  const tool = await getTool(lang, toolId)
 
   return (
     <main id="main" className="page page--center">

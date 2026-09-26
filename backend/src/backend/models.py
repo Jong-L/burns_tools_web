@@ -42,14 +42,6 @@ class DistortionOption(Base):
     __tablename__ = "distortion_options"
 
     code = mapped_column(String, primary_key=True)
-    name_zh: Mapped[str] = mapped_column(Text, nullable=False)
-    name_en: Mapped[str] = mapped_column(Text, nullable=False)
-    default_note_zh: Mapped[str] = mapped_column(
-        Text, nullable=False, server_default=""
-    )
-    default_note_en: Mapped[str] = mapped_column(
-        Text, nullable=False, server_default=""
-    )
     sort_order: Mapped[int] = mapped_column(Integer, nullable=False, unique=True)
 
 
@@ -118,8 +110,7 @@ class JournalDistortion(Base):
         ForeignKey("distortion_options.code"),
         nullable=True,
     )
-    # 快照：写入时由服务端按 code 反查规范中文名（spec 1.4）
-    name: Mapped[str] = mapped_column(Text, nullable=False)
+    # name 快照已取消：显示名按 code + 请求语言读 backend/data/distortion_options_<lang>.json（spec 1.4 修订）
     note: Mapped[str] = mapped_column(Text, nullable=False, server_default="")
 
     log: Mapped[JournalLog] = relationship(back_populates="distortions")

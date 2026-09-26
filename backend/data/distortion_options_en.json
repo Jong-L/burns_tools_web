@@ -1,0 +1,59 @@
+{
+    "options": [
+        {
+            "code": "all_or_nothing",
+            "name": "All-or-Nothing Thinking",
+            "default_note": "You see things in black-and-white extremes: if your performance falls short of perfect, you see yourself as a total failure."
+        },
+        {
+            "code": "overgeneralization",
+            "name": "Overgeneralization",
+            "default_note": "You draw broad conclusions from a single event, often using words like \"always\" or \"never\"."
+        },
+        {
+            "code": "mental_filter",
+            "name": "Mental Filter",
+            "default_note": "You dwell on the negative and ignore the positive, seeing only the downside as if through tinted lenses."
+        },
+        {
+            "code": "disqualifying_the_positive",
+            "name": "Disqualifying the Positive",
+            "default_note": "You reject positive experiences by insisting that they \"don't count\"."
+        },
+        {
+            "code": "mind_reading",
+            "name": "Jumping to Conclusions - Mind Reading",
+            "default_note": "Without evidence you assume you know what others are thinking, usually that they judge you negatively."
+        },
+        {
+            "code": "fortune_telling",
+            "name": "Jumping to Conclusions - Fortune Telling",
+            "default_note": "You predict that things will turn out badly and treat that prediction as an established fact."
+        },
+        {
+            "code": "magnification_minimization",
+            "name": "Magnification and Minimization",
+            "default_note": "You exaggerate your mistakes or others' achievements while shrinking your own strengths or others' shortcomings."
+        },
+        {
+            "code": "emotional_reasoning",
+            "name": "Emotional Reasoning",
+            "default_note": "You take your feelings as proof of reality: \"I feel it, so it must be true.\""
+        },
+        {
+            "code": "should_statements",
+            "name": "\"Should\" Statements",
+            "default_note": "You use \"I should…\" or \"I shouldn't…\" to demand things of yourself or others, which breeds guilt or anger."
+        },
+        {
+            "code": "labeling",
+            "name": "Labeling",
+            "default_note": "You attach a fixed, negative label to yourself or others instead of describing the specific behavior."
+        },
+        {
+            "code": "personalization",
+            "name": "Personalization",
+            "default_note": "You blame yourself for negative external events even when you were not responsible for them."
+        }
+    ]
+}

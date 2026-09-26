@@ -72,40 +72,24 @@ CREATE TABLE IF NOT EXISTS users (
 
 ### 1.2 distortion_options — 认知扭曲选项（参考表，新增）
 
-替代原本硬编码在两个编辑窗口里的 `distortion_data` 字典。前端已支持 zh/en 双语，中文名硬编码无法翻译，且默认描述改一次要动前端代码。
+替代原本硬编码在两个编辑窗口里的 `distortion_data` 字典。
+
+**2026-09-26 修订（多语言文本架构）**：表只保留 `code + sort_order`，各语言的名称/默认描述移到 `backend/data/distortion_options_<lang>.json`（与 tools 同一模式）。理由：加语言 = 加一份 JSON 文件，表结构永不动；code 是唯一权威标识，文本不落库。
 
 ```sql
 CREATE TABLE IF NOT EXISTS distortion_options (
     code            TEXT PRIMARY KEY,           -- 稳定标识，前端与数据库的唯一依据
-    name_zh         TEXT NOT NULL,
-    name_en         TEXT NOT NULL,
-    default_note_zh TEXT NOT NULL DEFAULT '',   -- 仅作为「编辑描述」输入框的初始内容
-    default_note_en TEXT NOT NULL DEFAULT '',
     sort_order      INTEGER NOT NULL UNIQUE     -- 展示顺序，固定 1–11
 );
 ```
 
-种子数据（11 条，顺序即 `sort_order`；中文默认描述逐字取自 `log_editor.py`，含全角引号，不要改写）：
-
-| code | name_zh | name_en | default_note_zh | default_note_en |
-|---|---|---|---|---|
-| all_or_nothing | 非此即彼 | All-or-Nothing Thinking | 用非黑即白的极端方式看待事物。如果表现不够完美，就会认为自己彻底失败。 | You see things in black-and-white extremes: if your performance falls short of perfect, you see yourself as a total failure. |
-| overgeneralization | 以偏概全 | Overgeneralization | 基于单一事件推断出广泛结论，常使用“总是”、“从不”等绝对化语言。 | You draw broad conclusions from a single event, often using words like "always" or "never". |
-| mental_filter | 心理过滤 | Mental Filter | 专注于消极事件而忽略积极方面，只看到负面信息，好像戴上了一副有色眼镜。 | You dwell on the negative and ignore the positive, seeing only the downside as if through tinted lenses. |
-| disqualifying_the_positive | 否定正面思考 | Disqualifying the Positive | 拒绝接受正面的经验，找理由告诉自己这些经验不算数。 | You reject positive experiences by insisting that they "don't count". |
-| mind_reading | 妄下结论 - 读心术 | Jumping to Conclusions - Mind Reading | 未经证实就认为知道别人在想什么，通常假设他人对自己有负面看法。 | Without evidence you assume you know what others are thinking, usually that they judge you negatively. |
-| fortune_telling | 妄下结论 - 先知错误 | Jumping to Conclusions - Fortune Telling | 预测事情会变得很糟糕，并坚信这一预言为事实。 | You predict that things will turn out badly and treat that prediction as an established fact. |
-| magnification_minimization | 放大和缩小 | Magnification and Minimization | 夸大自己的错误或他人的成就，同时缩小自己的优点或他人的缺点。 | You exaggerate your mistakes or others' achievements while shrinking your own strengths or others' shortcomings. |
-| emotional_reasoning | 情绪化推理 | Emotional Reasoning | 根据感觉来判断现实，“我这么感觉，所以它肯定是真的”。 | You take your feelings as proof of reality: "I feel it, so it must be true." |
-| should_statements | ‘应该’句式 | "Should" Statements | 常用“我应该…”、“我不应该…”来要求自己或他人，带来内疚感或愤怒。 | You use "I should…" or "I shouldn't…" to demand things of yourself or others, which breeds guilt or anger. |
-| labeling | 乱贴标签 | Labeling | 给自己或他人贴上固定、消极的标签，而不是描述具体的行为。 | You attach a fixed, negative label to yourself or others instead of describing the specific behavior. |
-| personalization | 罪责归己 | Personalization | 即使没有直接责任，也会将外界的消极事件归咎于自己。 | You blame yourself for negative external events even when you were not responsible for them. |
+文本数据文件 `distortion_options_zh.json` / `distortion_options_en.json`，每条 `{"code", "name", "default_note"}`。种子文案 11 条（顺序即 `sort_order`；中文默认描述逐字取自 `log_editor.py`，含全角引号，不要改写），完整内容以 JSON 文件为准，此处不再重复列表。
 
 注意：
 
-- 三个 `name_zh` 含特殊写法，迁移映射时字符串必须完全一致：`妄下结论 - 读心术`（连字符两侧各一个半角空格）、`妄下结论 - 先知错误`、`‘应该’句式`（全角单引号）。
-- 英文列是本修订新增的翻译，上线前需人工校对。
-- 前端通过 `GET /api/distortion-options` 获取选项与默认描述（返回中英双语两列，前端按当前语言取用），不再硬编码。
+- 三个中文名含特殊写法，迁移映射时字符串必须完全一致：`妄下结论 - 读心术`（连字符两侧各一个半角空格）、`妄下结论 - 先知错误`、`‘应该’句式`（全角单引号）。
+- 英文翻译已上线，后续改动需人工校对。
+- 前端通过 `GET /api/distortion-options?lang=xx` 获取选项与默认描述（按语言返回单份文本），不再硬编码。
 
 ---
 
@@ -149,7 +133,6 @@ CREATE TABLE IF NOT EXISTS journal_distortions (
     log_id      INTEGER NOT NULL REFERENCES journal_logs(id) ON DELETE CASCADE,
     position    INTEGER NOT NULL CHECK (position >= 0),
     option_code TEXT REFERENCES distortion_options(code),
-    name        TEXT NOT NULL,
     note        TEXT NOT NULL DEFAULT '',
     PRIMARY KEY (log_id, position)
 );
@@ -160,10 +143,9 @@ CREATE TABLE IF NOT EXISTS journal_distortions (
 | log_id | 所属日志，删除日志时级联删除 |
 | position | 该条扭曲在日志内的顺序，从 0 起，读出时按它排序。与 log_id 组成主键，因此顺序不可能重复，且自动获得 `(log_id, position)` 索引（原版外键列无索引，删除与级联都是全表扫） |
 | option_code | 指向 11 项参考表。老数据能映射到的填对应 code；映射不到的历史/异常值留 NULL |
-| name | **快照/兜底**，写入时的规范中文名。展示优先级：`option_code` 非空 → 按当前语言取 `name_zh`/`name_en`；`option_code` 为 NULL → 回退显示本列 |
 | note | 用户为该条写的描述，可为空字符串 |
 
-读出的 `name` 取值规则（用于前端渲染与导出）：`option_code` 非空时取参考表当前语言名称，为空时取本列。
+**2026-09-26 修订（取消 name 快照）**：原设计的 `name` 快照列已删除。快照冻结单一语言，与多语言界面互斥；取舍为「显示名跟随界面语言」——读出时按 `option_code` + 请求语言从 `distortion_options_<lang>.json` 现查回填（Web API 各读接口的 `?lang=` 参数）。`option_code` 为 NULL 的历史/异常数据（本表外键约束下理论不产生，桌面版迁移可能带入），API 返回的 `name` 为空字符串，由前端兜底显示。写入路径只校验 code，不写任何名称。
 
 ### 1.5 thought_counts — 消极思维计数
 
@@ -285,14 +267,14 @@ CREATE INDEX IF NOT EXISTS idx_journal_logs_unanswered
 | 方法 | 输入 | 输出 / 行为 |
 |---|---|---|
 | `get_journal_logs(user_id)` | — | `list[dict]`，每项 `{"type": str, "timestamp": float, "data": {...}}`。`data` 键为中文：`情况`、`情绪`、`下意识思维`、`认知扭曲`、`理性回应`、`结果`；文本空值归一为 `""`，认知扭曲缺失归一为 `[]`。排序：`理性回应` 为空的排前面，同组内按 timestamp 降序 |
-| `create_journal_log(user_id, log_type, timestamp, data)` | `log_type: str`（空白兜底 `three_column`）；`timestamp: float`；`data: dict` | 新建一条日志；`(user_id, timestamp)` 冲突时报错（HTTP 409），不覆盖；认知扭曲按顺序写入（code 必须在参考表内且不重复，否则报错 HTTP 422；`name` 由服务端按 code 反查规范中文名写入快照） |
+| `create_journal_log(user_id, log_type, timestamp, data)` | `log_type: str`（空白兜底 `three_column`）；`timestamp: float`；`data: dict` | 新建一条日志；`(user_id, timestamp)` 冲突时报错（HTTP 409），不覆盖；认知扭曲按顺序写入（code 必须在参考表内且不重复，否则报错 HTTP 422；不写名称快照，显示名读出时按语言现查——见 1.4 修订） |
 | `update_journal_log(user_id, log_id, ...)` | 除 `log_id` 外字段均可选；`distortions` 传入时整删重插 | 按 id 定位更新（不改 id、不改 created_at，刷新 updated_at）；修改 timestamp 时若与该用户其他记录冲突报 409 |
 | `delete_journal_log(user_id, log_id)` | `log_id: int` | 按 id 删除该条日志（认知扭曲靠外键级联删除） |
 
 `认知扭曲` 的对外形态（v2 变化点）：
 
-- 读出：`[{"code": "all_or_nothing", "name": "非此即彼", "note": "用户写的描述"}, ...]`，按 position 升序。`code` 为 NULL 的历史数据，`name` 为兜底名称。
-- 写入：`[{"code": "all_or_nothing", "note": "..."}, ...]`。服务端按 code 反查规范中文名写入 `name` 快照；code 不在参考表内（或同一请求内重复）则整个请求报错（HTTP 422）——API 场景下前端传错应显式失败，不静默丢弃。前端渲染名称时按当前语言取参考表，不直接用 `name`。
+- 读出：`[{"code": "all_or_nothing", "name": "非此即彼", "note": "用户写的描述"}, ...]`，按 position 升序。`name` 按 code + 请求语言（`?lang=`）现查回填，不落库；`code` 为 NULL 的历史数据 `name` 为空字符串，前端兜底。
+- 写入：`[{"code": "all_or_nothing", "note": "..."}, ...]`。服务端只校验 code：code 不在参考表内（或同一请求内重复）则整个请求报错（HTTP 422）——API 场景下前端传错应显式失败，不静默丢弃。不写名称快照（1.4 修订），渲染名称由读接口按语言解析。
 
 工具侧行为（Web 版需保留）：列表页展示「日期 / 类型 / 未回应徽标（理性回应为空时）/ 下意识思维前 100 字预览」；新增时弹模板选择（三列默认选中）；保存成功弹窗、时间戳重置为 0。
 
@@ -336,7 +318,7 @@ CREATE INDEX IF NOT EXISTS idx_journal_logs_unanswered
 
 | 方法 | 输入 | 输出 / 行为 |
 |---|---|---|
-| `get_distortion_options()` | — | `list[dict]`，每项 `{"code", "name_zh", "name_en", "default_note_zh", "default_note_en"}`，按 sort_order 升序。公开接口，不要求登录，可缓存 |
+| `get_distortion_options(lang)` | `lang: str`（查询参数，默认 `zh`；白名单 = data 目录下实际存在的 `distortion_options_<lang>.json`，未支持语言 404） | `list[dict]`，每项 `{"code", "name", "default_note"}`（按语言单份文本），顺序 = 表 sort_order 升序。公开接口，不要求登录，可缓存 |
 
 ---
 
@@ -350,7 +332,7 @@ CREATE INDEX IF NOT EXISTS idx_journal_logs_unanswered
 - 同一扭曲不可重复添加（已在列表中则按 code 判重并跳过）。
 - 每条可单独删除；条目顺序即 `position`，读出时按此还原。
 - 三列/六列编辑窗口使用同一套扭曲数据与添加逻辑。
-- 展示名称随界面语言走（zh 用 `name_zh`，en 用 `name_en`）。
+- 展示名称随界面语言走，由后端读接口按 `?lang=` 解析（1.2/1.4 修订后的多语言架构）。
 
 ### 3.2 三列法 vs 六列法字段差异
 

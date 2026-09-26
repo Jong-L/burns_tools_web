@@ -1,0 +1,59 @@
+{
+    "options": [
+        {
+            "code": "all_or_nothing",
+            "name": "非此即彼",
+            "default_note": "用非黑即白的极端方式看待事物。如果表现不够完美，就会认为自己彻底失败。"
+        },
+        {
+            "code": "overgeneralization",
+            "name": "以偏概全",
+            "default_note": "基于单一事件推断出广泛结论，常使用“总是”、“从不”等绝对化语言。"
+        },
+        {
+            "code": "mental_filter",
+            "name": "心理过滤",
+            "default_note": "专注于消极事件而忽略积极方面，只看到负面信息，好像戴上了一副有色眼镜。"
+        },
+        {
+            "code": "disqualifying_the_positive",
+            "name": "否定正面思考",
+            "default_note": "拒绝接受正面的经验，找理由告诉自己这些经验不算数。"
+        },
+        {
+            "code": "mind_reading",
+            "name": "妄下结论 - 读心术",
+            "default_note": "未经证实就认为知道别人在想什么，通常假设他人对自己有负面看法。"
+        },
+        {
+            "code": "fortune_telling",
+            "name": "妄下结论 - 先知错误",
+            "default_note": "预测事情会变得很糟糕，并坚信这一预言为事实。"
+        },
+        {
+            "code": "magnification_minimization",
+            "name": "放大和缩小",
+            "default_note": "夸大自己的错误或他人的成就，同时缩小自己的优点或他人的缺点。"
+        },
+        {
+            "code": "emotional_reasoning",
+            "name": "情绪化推理",
+            "default_note": "根据感觉来判断现实，“我这么感觉，所以它肯定是真的”。"
+        },
+        {
+            "code": "should_statements",
+            "name": "‘应该’句式",
+            "default_note": "常用“我应该…”、“我不应该…”来要求自己或他人，带来内疚感或愤怒。"
+        },
+        {
+            "code": "labeling",
+            "name": "乱贴标签",
+            "default_note": "给自己或他人贴上固定、消极的标签，而不是描述具体的行为。"
+        },
+        {
+            "code": "personalization",
+            "name": "罪责归己",
+            "default_note": "即使没有直接责任，也会将外界的消极事件归咎于自己。"
+        }
+    ]
+}
